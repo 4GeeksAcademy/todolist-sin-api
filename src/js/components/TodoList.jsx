@@ -18,24 +18,29 @@ const TodoList = () => {
     <div className="max-w-md mx-auto mt-10 p-4 border rounded-lg shadow-lg">
       <h2 className="text-xl font-bold mb-4">Lista de Tareas</h2>
       <div className="flex gap-2 mb-4">
-        <Input
+        <input
+          type="text"
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
           placeholder="Nueva tarea"
+          className="border p-2 rounded w-full"
         />
-        <Button onClick={addTask}>Agregar</Button>
+        <button onClick={addTask} className="bg-blue-500 text-white px-4 py-2 rounded">
+          Agregar
+        </button>
       </div>
-      <div className="space-y-2">
+      <ul className="space-y-2">
         {tasks.map((task, index) => (
-          <Card key={index} className="flex justify-between p-2">
-            <CardContent>{task}</CardContent>
-            <Button variant="destructive" onClick={() => removeTask(index)}>
-              <Trash2 size={16} />
-            </Button>
-          </Card>
+          <li key={index} className="flex justify-between items-center p-2 bg-gray-100 rounded">
+            {task}
+            <button onClick={() => removeTask(index)} className="text-red-500">
+              ❌
+            </button>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
-}
+};
+
 export default TodoList;
