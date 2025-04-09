@@ -22,6 +22,7 @@ const TodoList = () => {
           type="text"
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
+          onKeyDown={(e) => { if (e.key === "Enter") addTask(); }}
           placeholder="Nueva tarea"
           className="border p-2 rounded w-full"
         />
